@@ -1,16 +1,21 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
+# Dependencies
+node_modules/
+
+# Build output
 dist/
-wheels/
-*.egg-info
+build/
 
-# Virtual environments
-.venv/
+# Environment variables
+.env
+.env.*
+!.env.example
 
-# Claude Code (personal/local settings)
-.claude/settings.local.json
+# Logs
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
 
 # OS
 .DS_Store
@@ -19,3 +24,11 @@ Thumbs.db
 # IDE
 .idea/
 .vscode/
+*.swp
+*.tmp
+
+# TypeORM
+*.sqlite
+
+# Claude Code (personal/local settings)
+.claude/settings.local.json

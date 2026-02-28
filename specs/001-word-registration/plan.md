@@ -31,9 +31,9 @@
 |------|------|------|
 | I. TDD（NON-NEGOTIABLE） | ✅ PASS | フロントエンドは React Testing Library で `WordRegistrationForm` の描画・送信・バリデーション表示をテストする。バックエンドは NestJS Jest で `WordsService` / `WordsController` の単体テストを実装する。テストは実装コードより先に記述する。 |
 | II. RESTful API | ✅ PASS | `POST /api/words` を実装。201 Created / 400 Bad Request / 500 Internal Server Error を適切に返す。リソース指向 URL。 |
-| III. データ整合性 | ✅ PASS | フロントエンドで React Hook Form によるクライアントサイドバリデーション。バックエンドで `class-validator` による DTO バリデーション。MySQL の `NOT NULL` 制約・文字数制限をスキーマレベルでも保証。TypeORM マイグレーションを使用。 |
+| III. データ整合性 | ✅ PASS | フロントエンドで React Hook Form によるクライアントサイドバリデーション。バックエンドで `class-validator` による DTO バリデーション。MySQL の `NOT NULL` 制約・文字数制限をスキーマレベルでも保証。開発環境では `synchronize: true` を使用し迅速にイテレーションする。本番相当環境およびスキーマ変更を伴う後続 feature（認証機能等）ではマイグレーションを導入する。 |
 
-**Post-design 再確認**: Phase 1 設計後に更新予定。
+**Post-design 再確認**: Phase 1 設計完了。全原則に準拠を確認済み。開発環境の `synchronize: true` 使用は、本 feature がスキーマ初回作成であり既存データの損失リスクがないため許容する。
 
 ## Project Structure
 

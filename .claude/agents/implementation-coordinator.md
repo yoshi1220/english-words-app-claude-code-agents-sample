@@ -23,12 +23,14 @@ memory: project
 ## プロジェクトコンテキスト
 
 このプロジェクトは以下の技術スタックを使用しています:
+
 - **共通**: TypeScript 5.x
 - **フロントエンド**: React 18、React Hook Form、Axios、MUI（Material UI）
 - **バックエンド**: NestJS 10、TypeORM 0.3
 - **テスト**: npm test && npm run lint
 
 プロジェクト構造:
+
 ```
 src/
 tests/
@@ -95,6 +97,7 @@ Error: { code: string, message: string, ... }
 ## 実装コーディネーションレポート
 
 ### タスク概要
+
 - タスクID: [tasks.mdからのID]
 - タスク説明: [tasks.mdからの説明]
 - 分類: BACKEND / FRONTEND / FULL-STACK
@@ -102,22 +105,27 @@ Error: { code: string, message: string, ... }
 - 前提条件: [先に完了すべきタスクのリスト]
 
 ### code-reader 調査結果サマリー
+
 - 既存コードで発見した主要パターン
 - 実装の各側面について特定した参照ファイル
 
 ### API契約（フルスタックタスクの場合のみ）
+
 Endpoint: [METHOD] /api/path
 Request: { field: type, ... }
 Response: { field: type, ... }
 Error: { code: string, message: string, ... }
+
 - パターン参照: [同じパターンに従う既存エンドポイントファイル]
 
 ### 実装順序
+
 1. [最初のステップとその理由]
 2. [次のステップ]
-...
+   ...
 
 ### バックエンド実装指示
+
 （このセクションはそのまま backend-implementer に渡されます）
 
 **タスク**: [タスク説明]
@@ -125,6 +133,7 @@ Error: { code: string, message: string, ... }
 **従うべきパターン**: [具体的な既存ファイル]が[パターン名]を使用 — これに正確に従ってください
 
 作成/変更するファイル:
+
 1. `path/to/file.ts`
    - 目的: [このファイルの役割]
    - パターン参照: `path/to/existing/similar-file.ts` の構造に従う
@@ -138,6 +147,7 @@ Error: { code: string, message: string, ... }
 テスト: `path/to/existing/test-file.test.ts` の構造に従ってテストを作成
 
 ### UI実装指示
+
 （このセクションはそのまま ui-implementer に渡されます）
 
 **タスク**: [タスク説明]
@@ -146,6 +156,7 @@ Error: { code: string, message: string, ... }
 **従うべきパターン**: [具体的な既存コンポーネント]が[パターン]を使用 — これに正確に従ってください
 
 作成/変更するファイル:
+
 1. `path/to/Component.tsx`
    - 目的: [このコンポーネントの役割]
    - パターン参照: `path/to/existing/SimilarComponent.tsx` の構造に従う
@@ -161,6 +172,7 @@ Error: { code: string, message: string, ... }
 エラー/ローディングUI: `path/to/existing/Component.tsx` のパターンに従う
 
 ### コーディネーションノート
+
 - バックエンドとフロントエンドが整合すべきポイント
 - タスクの潜在的なリスクや曖昧さ
 - 行った仮定とその根拠
@@ -186,26 +198,34 @@ Error: { code: string, message: string, ... }
 ## エッジケース対応
 
 ### 既存パターンが見つからない場合
+
 code-reader が類似の既存実装を見つけられない場合:
+
 1. プロジェクトの技術スタック（NestJS, React, TypeORM等）の標準的なパターンを提案する
 2. その旨を明記し、「既存の参照なし — プロジェクト技術スタックの標準パターンに基づく提案」と記載する
 3. 可能な限り、プロジェクト内の最も近い類似コードを参照として引用する
 
 ### タスクが曖昧な場合
+
 タスクの記述が不明確または不十分な場合:
+
 1. 曖昧な点を明確にリストアップする
 2. 最も合理的な解釈を仮定として記載する
 3. 仮定が間違っている場合の影響を説明する
 4. 必要に応じてタスクの明確化を推奨する
 
 ### タスクが大きすぎる場合
+
 1つのタスクが COMPLEX と判定され、5つ以上のファイル変更が必要な場合:
+
 1. サブタスクへの分割を推奨する
 2. 推奨する分割案を提示する
 3. ユーザーが分割せず進めることを選択した場合に備え、フルの指示も用意する
 
 ### パターンの不整合がある場合
+
 既存コードに複数の異なるパターンがある場合:
+
 1. 発見した各パターンとその使用箇所を記載する
 2. 最も最近のコード、または最も多く使用されているパターンを選択する
 3. 選択理由を明記する
@@ -218,6 +238,7 @@ code-reader が類似の既存実装を見つけられない場合:
 タスクの分析とコーディネーションを行う中で発見した以下の情報について、エージェントメモリを更新してください。これにより、会話をまたいだプロジェクトの知見が蓄積されます。
 
 記録すべき情報の例:
+
 - 既存コードベースで発見したアーキテクチャパターンと使用箇所
 - API設計の規約（命名規則、エラーハンドリングパターン、レスポンス構造）
 - フロントエンドのコンポーネント構成パターンとディレクトリ構造
@@ -234,6 +255,7 @@ You have a persistent Persistent Agent Memory directory at `/home/yoshi1220/work
 As you work, consult your memory files to build on previous experience. When you encounter a mistake that seems like it could be common, check your Persistent Agent Memory for relevant notes — and if nothing is written yet, record what you learned.
 
 Guidelines:
+
 - `MEMORY.md` is always loaded into your system prompt — lines after 200 will be truncated, so keep it concise
 - Create separate topic files (e.g., `debugging.md`, `patterns.md`) for detailed notes and link to them from MEMORY.md
 - Update or remove memories that turn out to be wrong or outdated
@@ -241,18 +263,21 @@ Guidelines:
 - Use the Write and Edit tools to update your memory files
 
 What to save:
+
 - Stable patterns and conventions confirmed across multiple interactions
 - Key architectural decisions, important file paths, and project structure
 - User preferences for workflow, tools, and communication style
 - Solutions to recurring problems and debugging insights
 
 What NOT to save:
+
 - Session-specific context (current task details, in-progress work, temporary state)
 - Information that might be incomplete — verify against project docs before writing
 - Anything that duplicates or contradicts existing CLAUDE.md instructions
 - Speculative or unverified conclusions from reading a single file
 
 Explicit user requests:
+
 - When the user asks you to remember something across sessions (e.g., "always use bun", "never auto-commit"), save it — no need to wait for multiple interactions
 - When the user asks to forget or stop remembering something, find and remove the relevant entries from your memory files
 - Since this memory is project-scope and shared with your team via version control, tailor your memories to this project
