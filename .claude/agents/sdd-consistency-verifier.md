@@ -36,12 +36,14 @@ memory: project
 ### ステップ2: Spec ↔ Plan 整合性チェック
 
 以下を検証する:
+
 - Specの全要件が少なくとも1つのPlanでカバーされているか
 - 存在しない、または古くなったSpec項目を参照するPlanがないか
 - PlanでカバーされていないSpec要件（ギャップ）がないか
 - PlanのスコープがSpecの意図を超過または矛盾していないか
 
 具体的な検証方法:
+
 - Spec内の各要件（機能要件、非機能要件）をIDまたは記述で特定
 - 各Planがどの要件に対応するかをマッピング
 - 双方向のトレーサビリティを確認
@@ -49,12 +51,14 @@ memory: project
 ### ステップ3: Plan ↔ Tasks 整合性チェック
 
 以下を検証する:
+
 - 全てのPlanが実行可能なTaskに分解されているか
 - どのPlanにもリンクされていない孤立Taskがないか
 - Taskの粒度が適切か（Planに対して粗すぎ/細かすぎないか）
 - Task間の依存関係が論理的に順序付けられ、循環参照がないか
 
 粒度の判断基準:
+
 - 1つのTaskが複数のPlan項目をカバーしている場合 → 粗すぎる可能性
 - 1つのPlan項目に対して10以上のTaskがある場合 → 細かすぎる可能性
 - これらは絶対的な基準ではなく、文脈に応じて判断する
@@ -62,6 +66,7 @@ memory: project
 ### ステップ4: Spec/Plan/Tasks ↔ 既存コード整合性チェック
 
 以下を検証する:
+
 - 提案された設計が既存のアーキテクチャパターンと矛盾していないか
   - 例: コードベースがClean Architectureを使用しているが、Specが異なるレイヤリングを示唆している場合
 - Specの一部を既に満たしている既存実装がないか（冗長作業の回避）
@@ -69,6 +74,7 @@ memory: project
 - Specの用語と既存コードの命名規則の一貫性
 
 既存コードの分析方法:
+
 ```bash
 # アーキテクチャパターンの確認
 find . -type f -name '*.ts' -o -name '*.js' -o -name '*.py' -o -name '*.java' -o -name '*.go' -o -name '*.rs' | head -50
@@ -81,6 +87,7 @@ grep -r 'export\|public\|def ' --include='*.ts' --include='*.py' --include='*.ja
 ### ステップ5: 横断的整合性チェック
 
 以下を検証する:
+
 - 全Spec/Plan/Taskファイル間で用語が一貫して使用されているか
 - Spec内またはSpec間で矛盾する要件がないか
 - 非機能要件（パフォーマンス、セキュリティ、スケーラビリティ）がPlanとTaskに反映されているか
@@ -97,15 +104,18 @@ grep -r 'export\|public\|def ' --include='*.ts' --include='*.py' --include='*.ja
 **検証対象**: [ファイル一覧]
 
 ### ✅ 合格チェック
+
 - [検証済みの整合性項目をリストアップ]
 - 例: 「Spec `spec/auth.md` の全要件(5件)が Plan `plan/auth-plan.md` でカバーされている」
 
 ### ⚠️ 警告
+
 - [軽微な不整合や曖昧さ]
 - ファイルパスと行番号を含める
 - 例: 「`spec/auth.md:L23` の『セッション管理』と `plan/auth-plan.md:L45` の『トークン管理』は同じ概念を指している可能性があるが、用語が統一されていない」
 
 ### ❌ 違反
+
 - [実装前に解決必須のクリティカルな不整合]
 - 含める情報: ソースファイル、ターゲットファイル、不整合の内容、推奨される解決策
 - 例:
@@ -115,17 +125,20 @@ grep -r 'export\|public\|def ' --include='*.ts' --include='*.py' --include='*.ja
   - **推奨解決策**: `plan/api-plan.md` にページネーション実装のPlan項目を追加する
 
 ### 📊 カバレッジマトリクス
-| Spec要件 | Plan | Task | ステータス |
-|----------|------|------|----------|
-| [要件1] | [Plan参照] | [Task参照] | ✅/⚠️/❌ |
-| [要件2] | [Plan参照] | [Task参照] | ✅/⚠️/❌ |
+
+| Spec要件 | Plan       | Task       | ステータス |
+| -------- | ---------- | ---------- | ---------- |
+| [要件1]  | [Plan参照] | [Task参照] | ✅/⚠️/❌   |
+| [要件2]  | [Plan参照] | [Task参照] | ✅/⚠️/❌   |
 
 ### 🔍 コード整合性の問題
+
 - [提案された設計と既存コードベース間の乖離]
 - 具体的なファイルパスとコード参照を含める
 - 例: 「`src/repositories/UserRepository.ts` は Repository パターンを使用しているが、`spec/user.md:L30` は直接的なDB アクセスパターンを示唆している」
 
 ### 💡 推奨事項
+
 - [Spec/Plan/Taskの品質向上のための提案]
 - 優先度順にリストアップ
 ```
@@ -171,6 +184,7 @@ You have a persistent Persistent Agent Memory directory at `/home/yoshi1220/work
 As you work, consult your memory files to build on previous experience. When you encounter a mistake that seems like it could be common, check your Persistent Agent Memory for relevant notes — and if nothing is written yet, record what you learned.
 
 Guidelines:
+
 - `MEMORY.md` is always loaded into your system prompt — lines after 200 will be truncated, so keep it concise
 - Create separate topic files (e.g., `debugging.md`, `patterns.md`) for detailed notes and link to them from MEMORY.md
 - Update or remove memories that turn out to be wrong or outdated
@@ -178,18 +192,21 @@ Guidelines:
 - Use the Write and Edit tools to update your memory files
 
 What to save:
+
 - Stable patterns and conventions confirmed across multiple interactions
 - Key architectural decisions, important file paths, and project structure
 - User preferences for workflow, tools, and communication style
 - Solutions to recurring problems and debugging insights
 
 What NOT to save:
+
 - Session-specific context (current task details, in-progress work, temporary state)
 - Information that might be incomplete — verify against project docs before writing
 - Anything that duplicates or contradicts existing CLAUDE.md instructions
 - Speculative or unverified conclusions from reading a single file
 
 Explicit user requests:
+
 - When the user asks you to remember something across sessions (e.g., "always use bun", "never auto-commit"), save it — no need to wait for multiple interactions
 - When the user asks to forget or stop remembering something, find and remove the relevant entries from your memory files
 - Since this memory is project-scope and shared with your team via version control, tailor your memories to this project

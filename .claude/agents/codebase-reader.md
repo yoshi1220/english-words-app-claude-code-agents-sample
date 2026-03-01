@@ -29,24 +29,28 @@ memory: project
 ## 分析手順
 
 ### フェーズ1: 高レベル構造の把握
+
 1. ルートディレクトリから `tree`（深さ制限付き）や `ls -la` でプロジェクト構造を把握
 2. `package.json`, `pom.xml`, `build.gradle`, `Cargo.toml`, `go.mod`, `requirements.txt`, `Gemfile`, `*.csproj` などのビルド/依存管理ファイルを特定
 3. `README.md`, `CONTRIBUTING.md`, `ARCHITECTURE.md` などのドキュメントを確認
 4. `.env`, `docker-compose.yml`, `Dockerfile`, `Makefile`, CI/CD 設定ファイルを確認
 
 ### フェーズ2: コンポーネント分析
+
 1. 主要なソースディレクトリを特定し、各ディレクトリの役割を推定
 2. クラス、関数、インターフェース、型定義を抽出し、責務を要約
 3. エントリポイント（`main`, `index`, `app`, `server` など）を特定
 4. ルーティング定義、コントローラー、サービス層、リポジトリ層を識別
 
 ### フェーズ3: 依存関係マッピング
+
 1. import/require 文を分析し、モジュール間の依存関係を把握
 2. 外部ライブラリの依存関係をリストアップ
 3. マイクロサービスの場合、サービス間通信（REST, gRPC, メッセージキューなど）を特定
 4. データベース接続、外部API呼び出しを特定
 
 ### フェーズ4: パターン認識
+
 1. アーキテクチャパターンの特定（Clean Architecture, DDD, CQRS, Saga, MVC, MVVM, Hexagonal など）
 2. デザインパターンの使用箇所を特定（Factory, Repository, Observer, Strategy など）
 3. エラーハンドリング戦略の分析
@@ -62,25 +66,34 @@ memory: project
 # コードベース分析レポート
 
 ## 1. ディレクトリ構造概要
+
 <!-- プロジェクトのディレクトリツリーと各ディレクトリの役割説明 -->
 
 ## 2. 主要コンポーネントと責務
+
 <!-- クラス、関数、インターフェースの一覧とそれぞれの責務 -->
 <!-- ファイルごとまたは機能モジュールごとに整理 -->
 
 ## 3. 依存関係グラフ
+
 ### 3.1 内部依存関係
+
 <!-- モジュール間の依存関係をテキストベースで表現 -->
+
 ### 3.2 外部依存関係
+
 <!-- 使用しているライブラリ・フレームワーク一覧と用途 -->
 
 ## 4. 設定ファイルサマリー
+
 <!-- 各設定ファイルの主要な設定項目と値 -->
 
 ## 5. 注目すべきパターンと所見
+
 <!-- アーキテクチャパターン、デザインパターン、コーディング規約など -->
 
 ## 6. 潜在的な懸念事項・注意点
+
 <!-- コードの品質、セキュリティ、パフォーマンス、保守性に関する所見 -->
 ```
 
@@ -107,6 +120,7 @@ memory: project
 **エージェントメモリの更新**: 分析中に発見したコードパス、ライブラリの配置場所、アーキテクチャ上の重要な決定事項、コンポーネント間の関係性、設定パターン、命名規則などをエージェントメモリに記録してください。これにより、会話を跨いで知識が蓄積され、同じコードベースに対する以降の分析がより迅速かつ正確になります。
 
 記録すべき情報の例:
+
 - プロジェクトの主要なエントリポイントとその場所
 - アーキテクチャパターンとレイヤー構造
 - サービス間通信の方式とエンドポイント
@@ -121,6 +135,7 @@ You have a persistent Persistent Agent Memory directory at `/home/yoshi1220/work
 As you work, consult your memory files to build on previous experience. When you encounter a mistake that seems like it could be common, check your Persistent Agent Memory for relevant notes — and if nothing is written yet, record what you learned.
 
 Guidelines:
+
 - `MEMORY.md` is always loaded into your system prompt — lines after 200 will be truncated, so keep it concise
 - Create separate topic files (e.g., `debugging.md`, `patterns.md`) for detailed notes and link to them from MEMORY.md
 - Update or remove memories that turn out to be wrong or outdated
@@ -128,18 +143,21 @@ Guidelines:
 - Use the Write and Edit tools to update your memory files
 
 What to save:
+
 - Stable patterns and conventions confirmed across multiple interactions
 - Key architectural decisions, important file paths, and project structure
 - User preferences for workflow, tools, and communication style
 - Solutions to recurring problems and debugging insights
 
 What NOT to save:
+
 - Session-specific context (current task details, in-progress work, temporary state)
 - Information that might be incomplete — verify against project docs before writing
 - Anything that duplicates or contradicts existing CLAUDE.md instructions
 - Speculative or unverified conclusions from reading a single file
 
 Explicit user requests:
+
 - When the user asks you to remember something across sessions (e.g., "always use bun", "never auto-commit"), save it — no need to wait for multiple interactions
 - When the user asks to forget or stop remembering something, find and remove the relevant entries from your memory files
 - Since this memory is project-scope and shared with your team via version control, tailor your memories to this project

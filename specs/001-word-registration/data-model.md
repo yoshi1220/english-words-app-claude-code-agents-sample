@@ -64,14 +64,17 @@ export class Word {
 
 ```typescript
 // backend/src/words/dto/create-word.dto.ts
+import { Transform } from 'class-transformer';
 import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 
 export class CreateWordDto {
+  @Transform(({ value }) => typeof value === 'string' ? value.trim() : value)
   @IsNotEmpty({ message: 'スペルを入力してください' })
   @IsString()
   @MaxLength(200, { message: 'スペルは200文字以内で入力してください' })
   spell: string;
 
+  @Transform(({ value }) => typeof value === 'string' ? value.trim() : value)
   @IsNotEmpty({ message: '意味を入力してください' })
   @IsString()
   @MaxLength(500, { message: '意味は500文字以内で入力してください' })

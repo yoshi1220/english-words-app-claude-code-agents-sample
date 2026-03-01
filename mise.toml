@@ -1,3 +1,24 @@
 [tools]
 python = "latest"
 uv = "latest"
+node = "20"
+
+[tasks.dev]
+description = "Start all services (DB, Backend, Frontend) with Docker Compose"
+run = "docker compose up --build"
+
+[tasks."dev:detach"]
+description = "Start all services in background"
+run = "docker compose up --build -d"
+
+[tasks."dev:down"]
+description = "Stop all services"
+run = "docker compose down"
+
+[tasks."dev:logs"]
+description = "Show logs from all services"
+run = "docker compose logs -f"
+
+[tasks."dev:reset"]
+description = "Stop all services and remove volumes (DB data will be lost)"
+run = "docker compose down -v"

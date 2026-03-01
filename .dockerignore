@@ -1,0 +1,16 @@
+node_modules/
+dist/
+build/
+.git/
+.gitignore
+.dockerignore
+*.log
+*.md
+coverage/
+.env*
+!.env.example
+.vscode/
+.idea/
+specs/
+.specify/
+.claude/
